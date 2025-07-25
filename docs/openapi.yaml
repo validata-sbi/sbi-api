@@ -1,0 +1,40 @@
+openapi: 3.0.3
+info:
+  title: API CRM - SBI
+  version: 1.0.0
+  description: >
+    Documentación de la API del CRM para el sistema SBI. Desarrollado con OpenAPI y Redoc.
+
+servers:
+  - url: http://localhost:8012/sbi-backend-dev/crm.php
+    description: Servidor local
+
+paths:
+  /?ops=getClientes:
+    get:
+      summary: Obtener todos los clientes
+      responses:
+        '200':
+          description: Lista de clientes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cliente'
+
+components:
+  schemas:
+    Cliente:
+      type: object
+      properties:
+        id:
+          type: integer
+        nombres:
+          type: string
+        apellidos:
+          type: string
+        documento:
+          type: string
+        tipo_doc:
+          type: string
